@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "release": "standard-version",
     "clean": "rimraf dist",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client",
     "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue client",
     "build": "npm run clean && npm run build:client",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
-    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
-    "pre-commit": "npm run lint"
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,8 @@
     "vue": "2.5.13"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
     "autoprefixer": "7.2.3",
     "babel-core": "6.26.0",
     "babel-eslint": "^10.0.1",
@@ -46,6 +49,7 @@
     "less-loader": "^4.1.0",
     "postcss-loader": "2.0.9",
     "rimraf": "^2.6.2",
+    "standard-version": "^4.4.0",
     "style-loader": "0.19.1",
     "stylus": "0.54.5",
     "stylus-loader": "3.0.1",
@@ -55,5 +59,12 @@
     "webpack": "3.10.0",
     "webpack-dev-server": "2.9.7",
     "webpack-merge": "^4.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
