@@ -3,6 +3,7 @@ import App from './app.vue';
 
 import './assets/styles/global.less';
 
+// eslint-disable-next-line no-new
 new Vue({
     el: '#root',
     render: h => h(App)

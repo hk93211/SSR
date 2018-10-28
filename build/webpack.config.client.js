@@ -46,7 +46,7 @@ if (isDev) {
                         },
                         'less-loader'
                     ]
-                },
+                }
             ]
         },
         devServer: {

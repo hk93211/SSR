@@ -27,7 +27,7 @@ export default {
     data() {
         return {
             states: ['all', 'active', 'completed']
-        }
+        };
     },
     computed: {
         unFinishedTodosLength() {
@@ -42,7 +42,7 @@ export default {
             this.$emit('clearAllCompleted');
         }
     }
-}
+};
 </script>
 
 <style lang="less">

@@ -47,7 +47,7 @@ export default {
                     id: '3',
                     content: '打豆豆',
                     completed: true
-                },
+                }
             ],
             filter: 'all'
         };

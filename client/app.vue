@@ -23,15 +23,15 @@ export default {
             cityAry: [],
             search: '',
             cityNameArray: []
-        }
+        };
     },
     computed: {
         cityName() {
             return this.cityNameArray.map(item => {
                 return item.area_name;
-            })
+            });
         }
-    },
+    }
 };
 </script>
 

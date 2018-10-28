@@ -4,13 +4,13 @@ export default {
     data() {
         return {
             authod: 'HK'
-        }
+        };
     },
     render() {
         return (
             <div id={$style.footer}>
                 <span>Writen by {this.authod}</span>
             </div>
-        )
+        );
     }
-}
+};
