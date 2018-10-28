@@ -81,25 +81,25 @@ if (isDev) {
     config.module.rules.push({
         test: /\.less/,
         use: ExtractPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-              }
-            },
-            'less-loader'
-          ]
+            fallback: 'style-loader',
+            use: [
+                'css-loader',
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                'less-loader'
+            ]
         })
-      });
+    });
     config.plugins.push(
         new ExtractPlugin('styles.[contentHash:8].css'),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor'
         }),
-        // 
+        //
         new webpack.optimize.CommonsChunkPlugin({
             name: 'runtime'
         })
