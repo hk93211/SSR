@@ -1,4 +1,4 @@
-import '../assets/styles/footer.less';
+import $style from '../assets/styles/footer.less';
 
 export default {
     data() {
@@ -8,7 +8,7 @@ export default {
     },
     render() {
         return (
-            <div id="footer">
+            <div id={$style.footer}>
                 <span>Writen by {this.authod}</span>
             </div>
         )

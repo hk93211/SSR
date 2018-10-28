@@ -2,7 +2,7 @@ const path = require('path');
 
 let config = {
     target: 'web',
-    entry: path.join(__dirname, '../src/main.js'),
+    entry: path.join(__dirname, '../client/main.js'),
     output: {
         path: path.join(__dirname, '../dist'),
         filename: 'bundle.js'

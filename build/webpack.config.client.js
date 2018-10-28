@@ -7,7 +7,7 @@ const merge = require('webpack-merge');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-console.log(path.join(__dirname, '../src/main.js'));
+console.log(path.join(__dirname, '../client/main.js'));
 
 const defaultPlugins = [
     new webpack.DefinePlugin({
@@ -28,8 +28,16 @@ if (isDev) {
                 {
                     test: /\.less$/,
                     use: [
-                        'style-loader',
-                        'css-loader',
+                        'vue-style-loader',
+                        // 'css-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true, // 启用 css 模块, 注意: 如果设置为true, 所有样式文件的import 都要使用css-modules的这种形式来写
+                                localIdentName: isDev ? '[path][name]-[hash:base64:5]' : '[hash:base64:5]', // 配置生成的标识符, dev 环境使用文件的全路径, 好查类名所在文件
+                                camelCase: true // 以驼峰化式命名导出类名
+                            }
+                        },
                         {
                             loader: 'postcss-loader',
                             options: {
@@ -38,7 +46,7 @@ if (isDev) {
                         },
                         'less-loader'
                     ]
-                }
+                },
             ]
         },
         devServer: {
@@ -59,7 +67,7 @@ if (isDev) {
 } else {
     config = merge(baseConfig, {
         entry: {
-            app: path.join(__dirname, '../src/main.js'),
+            app: path.join(__dirname, '../client/main.js'),
             vendor: ['vue']
         },
         output: {
@@ -70,9 +78,17 @@ if (isDev) {
                 {
                     test: /\.less$/,
                     use: ExtractPlugin.extract({
-                        fallback: 'style-loader',
+                        fallback: 'vue-style-loader',
                         use: [
-                            'css-loader',
+                            // 以前的vue-loader的配置转换到css-loader里面来配置了
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: true, // 启用 css 模块, 注意: 如果设置为true, 所有样式文件的import 都要使用css-modules的这种形式来写
+                                    localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]', // 配置生成的标识符, dev 环境使用文件的全路径, 好查类名所在文件
+                                    camelCase: true // 以驼峰化式命名导出类名
+                                }
+                            },
                             {
                                 loader: 'postcss-loader',
                                 options: {
