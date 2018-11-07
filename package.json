@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js --ext .jsx --ext .vue client",
     "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue client",
     "build": "npm run clean && npm run build:client",
+    "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js"
   },
@@ -18,7 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "eslint-loader": "^2.1.1",
-    "vue": "2.5.13"
+    "vue": "2.5.13",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
