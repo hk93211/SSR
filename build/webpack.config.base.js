@@ -5,7 +5,8 @@ let config = {
     entry: path.join(__dirname, '../client/main.js'),
     output: {
         path: path.join(__dirname, '../dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [

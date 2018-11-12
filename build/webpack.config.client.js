@@ -56,6 +56,9 @@ if (isDev) {
             hot: true,
             overlay: {
                 errors: true
+            },
+            historyApiFallback: { // 要让非hash路由, history路由认识, 要加这行代码, 这里跟 webpack 配置的 output 里面的 publicPath 对应, 如果 publicPath 为 '/public/', 那么这里为 '/publicPath/index.html'
+                index: '/index.html'
             }
         },
         plugins: defaultPlugins.concat([
