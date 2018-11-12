@@ -7,6 +7,20 @@ import createRouter from './config/router';
 
 const router = createRouter();
 
+router.beforeEach((to, from, next) => {
+    console.log('before each invoked');
+    next();
+});
+
+router.beforeResolve((to, from, next) => {
+    console.log('before resolve invoked');
+    next();
+});
+
+router.afterEach((to, from) => {
+    console.log('after each invoked');
+});
+
 Vue.use(VueRouter);
 
 // eslint-disable-next-line no-new
