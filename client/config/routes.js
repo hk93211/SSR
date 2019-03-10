@@ -7,7 +7,8 @@ export default [
         redirect: '/app'
     },
     {
-        path: '/app/:id',
+        // path: '/app/:id',
+        path: '/app',
         props: true, // 如果是true 的话, 会把:id参数当成props传入到Todo组件内部
         component: () => import('../views/todo/todo.vue'),
         name: 'app',

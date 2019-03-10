@@ -14,9 +14,30 @@ const component = {
     }
 };
 
+// 或者是value这个值要绑定其他的值那么i
+const component2 = {
+    // 自定义vmodel的一些名称
+    model: {
+        prop: 'hehe',
+        event: 'change1'
+    },
+    props: ['hehe'],
+    template: `
+        <div>
+            <input type="text" @input="handleInput" :value="hehe" />
+        </div>
+    `,
+    methods: {
+        handleInput(e) {
+            this.$emit('change1', e.target.value);
+        }
+    }
+};
+
 new Vue({
     components: {
-        CompOne: component
+        CompOne: component,
+        CompTwo: component2
     },
     el: '#root',
     data() {
@@ -26,14 +47,15 @@ new Vue({
     },
     template: `
         <div>
-            <comp-one v-model="value"></comp-one>
+            <comp-one :value="value" @input="value = arguments[0]"></comp-one>
+            <comp-two v-model="value"></comp-two>
             <span>{{value}}</span>
         </div>
     `,
     methods: {
-        handleInput(value) {
-            this.value = value;
-        }
+        // handleInput(value) {
+        //     this.value = value;
+        // }
     }
 });
 
